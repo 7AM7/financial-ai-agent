@@ -54,6 +54,19 @@ make logs        # View logs
 
 ---
 
+## 📊 Dashboard Preview
+
+![Financial Analytics Dashboard](images/dashboard.png)
+
+The dashboard provides:
+- Real-time financial metrics (Total Revenue, Profit, Expenses)
+- Interactive Profit & Loss charts by quarter
+- Top Revenue and Expense accounts analysis
+- AI-powered chatbot for natural language queries
+- Dynamic component repositioning on demand
+
+---
+
 ## 🏗️ System Architecture
 
 ```
