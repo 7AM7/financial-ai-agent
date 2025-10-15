@@ -46,7 +46,7 @@ make start
 
 **Key Commands:**
 ```bash
-./start.sh       # Start everything (postgres → data pipeline → backend → frontend)
+make start       # Start everything (postgres → data pipeline → backend → frontend)
 make stop        # Stop all services
 make restart     # Restart with fresh data
 make logs        # View logs
