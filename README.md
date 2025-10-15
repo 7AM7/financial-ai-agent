@@ -178,7 +178,7 @@ Each component has its own detailed README:
 **Why this matters:**
 - ❌ Backend will CRASH if database has no data
 - ⚠️ Data pipeline is a SEPARATE Python project in `./data_pipeline/`
-- ✅ Use `./start.sh` - it handles everything automatically
+- ✅ Use `make start` - it handles everything automatically
 
 **Manual startup (if needed):**
 ```bash
@@ -285,7 +285,7 @@ curl -X POST http://localhost:8000/api/chat/query \
 ## 📁 Project Structure
 
 ```
-ai/
+financial-ai-agent/
 ├── README.md              # ← You are here
 ├── start.sh               # 🚀 One-command startup
 ├── Makefile               # Convenient commands
