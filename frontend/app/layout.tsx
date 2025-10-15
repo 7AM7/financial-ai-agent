@@ -29,7 +29,7 @@ export default function RootLayout({
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <CopilotKit 
           runtimeUrl="/api/copilotkit"
-          // showDevConsole={true}
+          showDevConsole={false}
           agent="financial_assistant"
           // threadId="92aa28d1-d15a-10be-aec1-1ba6c3e11327"
         >
