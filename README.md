@@ -273,11 +273,6 @@ lsof -i :5432  # PostgreSQL
 ```bash
 # Get dashboard overview
 curl http://localhost:8000/api/dashboard/overview
-
-# Ask natural language question
-curl -X POST http://localhost:8000/api/chat/query \
-  -H "Content-Type: application/json" \
-  -d '{"question": "What was total revenue in Q1 2024?"}'
 ```
 
 ---

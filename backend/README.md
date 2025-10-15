@@ -95,14 +95,6 @@ GET /api/dashboard/category-performance
 GET /api/dashboard/overview
 ```
 
-### AI Chat
-```bash
-POST /api/chat/query
-{
-  "question": "What was total revenue in Q1 2024?"
-}
-```
-
 ### CopilotKit (Frontend Integration)
 ```bash
 POST /copilotkit
@@ -293,11 +285,6 @@ cat .env | grep POSTGRES
 ```bash
 # Check logs for details
 uvicorn src.main:app --reload --log-level debug
-
-# Verify Azure OpenAI credentials
-curl -X POST http://localhost:8000/api/chat/query \
-  -H "Content-Type: application/json" \
-  -d '{"question": "hello"}'
 ```
 
 **CORS Errors?**
@@ -328,13 +315,6 @@ echo "CORS_ORIGINS=http://localhost:3000" >> .env
 **Run with auto-reload**:
 ```bash
 uvicorn src.main:app --reload --host 0.0.0.0 --port 8000
-```
-
-**Test the agent**:
-```bash
-curl -X POST http://localhost:8000/api/chat/query \
-  -H "Content-Type: application/json" \
-  -d '{"question": "What was total revenue in 2024?"}'
 ```
 
 **View API docs**:

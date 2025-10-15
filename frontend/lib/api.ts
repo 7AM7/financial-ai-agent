@@ -89,16 +89,6 @@ export interface DashboardOverview {
   trends: TrendAnalysis[];
 }
 
-export interface QueryRequest {
-  question: string;
-}
-
-export interface QueryResponse {
-  answer: string;
-  sql_query: string | null;
-  results: Record<string, unknown>[] | null;
-}
-
 // API Client
 export const api = {
   /**
@@ -195,22 +185,6 @@ export const api = {
   async getDashboardOverview(): Promise<DashboardOverview> {
     const response = await fetch(`${API_BASE_URL}/api/dashboard/overview`);
     if (!response.ok) throw new Error('Failed to fetch dashboard overview');
-    return response.json();
-  },
-
-  /**
-   * Query financial data using natural language
-   */
-  async queryFinancialData(question: string): Promise<QueryResponse> {
-    const response = await fetch(`${API_BASE_URL}/api/chat/query`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ question }),
-    });
-
-    if (!response.ok) throw new Error('Failed to query financial data');
     return response.json();
   },
 

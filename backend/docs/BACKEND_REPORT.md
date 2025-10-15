@@ -727,28 +727,6 @@ Response:
 
 ---
 
-#### **AI Chat Endpoint**
-```
-POST /api/chat/query
-Content-Type: application/json
-
-{
-  "question": "What was total revenue in Q1 2024?"
-}
-
-Response:
-{
-  "answer": "Based on the data, total revenue in Q1 2024 was $5,200,000...",
-  "sql": "SELECT SUM(amount) FROM v_ai_financial_data WHERE...",
-  "result_data": [...],
-  "result_count": 1
-}
-```
-
-**Note**: This endpoint is for testing. Production frontend uses `/copilotkit` for streaming.
-
----
-
 #### **CopilotKit Endpoint**
 ```
 POST /copilotkit
