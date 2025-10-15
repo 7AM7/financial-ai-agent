@@ -1,0 +1,31 @@
+# Core Dependencies
+sqlalchemy>=2.0.0
+psycopg2-binary>=2.9.9
+alembic>=1.13.0
+
+# Data Processing
+pandas>=2.0.0
+python-dateutil>=2.8.2
+
+# Configuration & Environment
+python-dotenv>=1.0.0
+pydantic>=2.0.0
+pydantic-settings>=2.0.0
+
+# Logging & Monitoring
+structlog>=23.0.0
+
+# Testing
+pytest>=7.4.0
+pytest-cov>=4.1.0
+faker>=20.0.0
+
+# Code Quality
+black>=23.0.0
+flake8>=6.0.0
+mypy>=1.7.0
+isort>=5.12.0
+
+# API (for AI agent)
+fastapi>=0.104.0
+uvicorn[standard]>=0.24.0

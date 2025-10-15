@@ -1,0 +1,13 @@
+# SQL repair prompt for fixing query errors
+
+template: |
+  The following SQL query produced an error:
+
+  ERROR:
+  {{error}}
+
+  ORIGINAL SQL:
+  {{sql}}
+
+  Please fix the query to resolve this error while keeping the same intent.
+  Return ONLY the corrected SQL query.

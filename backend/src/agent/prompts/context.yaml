@@ -1,0 +1,27 @@
+# Shared context about the financial database schema
+
+financial_context: |
+  ## Database Schema Overview
+
+  ### PRIMARY VIEW FOR AI QUERIES:
+  **v_ai_financial_data** - Complete denormalized financial data (NO JOINs needed!)
+
+  Available columns:
+  - **Identifiers**: fact_key
+  - **Account Info**: account_name, account_type, account_category, parent_account_name
+  - **Transaction**: amount, currency
+  - **Time Dimensions**: year, quarter, month, year_quarter, period_start, period_end, month_name, year_month
+  - **Source**: source_system, source_record_id
+
+  ### Account Types:
+  - revenue: Income accounts
+  - expense: Operating expenses
+  - cogs: Cost of goods sold
+
+  ### Additional Specialized Views:
+  - **v_profit_loss**: Complete P&L by period with margins
+  - **v_trend_analysis**: Month-over-month trends with % change
+  - **v_yoy_growth**: Year-over-year growth analysis
+  - **v_category_performance**: Performance by category
+  - **v_top_accounts_yearly**: Top accounts ranked by year (NO duplicates)
+  - **v_top_accounts_quarterly**: Top accounts ranked by quarter (NO duplicates)

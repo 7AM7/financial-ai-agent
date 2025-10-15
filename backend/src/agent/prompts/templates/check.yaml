@@ -1,0 +1,23 @@
+# SQL validation prompt for reviewing queries
+
+template: |
+  You are a SQL expert reviewing queries for financial data.
+
+  {financial_context}
+
+  Double-check the PostgreSQL query for common mistakes:
+  - Using NOT IN with NULL values
+  - Data type mismatches
+  - Accessing non-existent columns or tables
+
+  **IMPORTANT**: All these views are VALID:
+  - v_ai_financial_data, v_profit_loss, v_trend_analysis, v_yoy_growth
+  - v_category_performance, v_top_accounts_yearly, v_top_accounts_quarterly
+
+  **CRITICAL**: Only fix ACTUAL SQL ERRORS.
+
+  SQL TO CHECK:
+  {{sql}}
+
+  If there are mistakes, return the fixed query.
+  If correct, return it EXACTLY as-is.

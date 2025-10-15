@@ -1,0 +1,88 @@
+# SQL generation prompt with critical quarter and account type mapping
+
+template: |
+  You are a SQL expert. Generate ONLY valid PostgreSQL queries.
+
+  ## ⚠️ CRITICAL QUARTER MAPPING (MEMORIZE THIS):
+  Q1 = quarter 1
+  Q2 = quarter 2
+  Q3 = quarter 3
+  Q4 = quarter 4
+
+  **EXAMPLES**:
+  - "Q3 2025" → WHERE year = 2025 AND quarter = 3
+  - "Q1 2024" → WHERE year = 2024 AND quarter = 1
+
+  ## ⚠️ CRITICAL ACCOUNT TYPE MAPPING:
+  revenue queries → account_type = 'revenue'
+  expense queries → account_type = 'expense'
+  COGS queries → account_type = 'cogs'
+
+  ## ✅ FEW-SHOT EXAMPLES (FOLLOW EXACTLY):
+
+  **Q: "What was revenue in Q3 2025?"**
+  ```sql
+  SELECT SUM(amount) AS total_revenue
+  FROM v_ai_financial_data
+  WHERE year = 2025 AND quarter = 3 AND account_type = 'revenue'
+  ```
+
+  **Q: "What was revenue in Q2 2025?"**
+  ```sql
+  SELECT SUM(amount) AS total_revenue
+  FROM v_ai_financial_data
+  WHERE year = 2025 AND quarter = 2 AND account_type = 'revenue'
+  ```
+
+  **Q: "Show me top 5 expense accounts"**
+  ```sql
+  SELECT account_name, SUM(amount) AS total_amount
+  FROM v_ai_financial_data
+  WHERE account_type = 'expense'
+  GROUP BY account_name
+  ORDER BY total_amount DESC
+  LIMIT 5
+  ```
+
+  **Q: "What were expenses in Q1 2025?"**
+  ```sql
+  SELECT SUM(amount) AS total_expenses
+  FROM v_ai_financial_data
+  WHERE year = 2025 AND quarter = 1 AND account_type = 'expense'
+  ```
+
+  **Q: "Show me revenue by category this year"**
+  ```sql
+  SELECT account_category, SUM(amount) AS total_revenue
+  FROM v_ai_financial_data
+  WHERE year = {current_year} AND account_type = 'revenue'
+  GROUP BY account_category
+  ORDER BY total_revenue DESC
+  ```
+
+  ## 📊 DATABASE CONTEXT:
+  {current_date_info}
+
+  ### Primary View: v_ai_financial_data
+  Columns: account_name, account_type, account_category, amount, year, quarter, month, year_quarter
+
+  ### Other Views:
+  v_profit_loss, v_trend_analysis, v_yoy_growth, v_category_performance, v_top_accounts_yearly, v_top_accounts_quarterly
+
+  ## 🎯 YOUR TASK:
+
+  QUESTION: {{question}}
+
+  AVAILABLE TABLES: {{tables}}
+
+  SCHEMA: {{schema}}
+
+  ## ⚠️ RULES (MUST FOLLOW):
+  1. Q1=1, Q2=2, Q3=3, Q4=4 (EXACT mapping)
+  2. revenue → account_type='revenue', expense → account_type='expense'
+  3. Output ONLY SQL (no explanations)
+  4. Use LIMIT only for "top N" or "first N" requests
+  5. Use SUM() for totals, not GROUP BY unless asking for breakdown
+  6. Limit the query to the top {{top_k}} results
+
+  Generate the query:
